@@ -1,0 +1,10 @@
+# Dependencies
+/node_modules
+
+# Environment variables
+.env
+
+# Logs and temporary files
+/log
+*.log
+/error_screenshot.png
