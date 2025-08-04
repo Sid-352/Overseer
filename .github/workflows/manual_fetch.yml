@@ -1,5 +1,4 @@
 name: Manual Tweet Fetch
-
 on:
   workflow_dispatch:
     inputs:
@@ -7,7 +6,6 @@ on:
         description: 'Twitter handle to check (without the @)'
         required: true
         default: 'ELDENRING'
-
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -20,8 +18,21 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          # The directory where playwright stores its browsers
+          path: ~/.cache/ms-playwright
+          # The key to identify the cache. It's based on the OS and a hash of your package-lock.json.
+          # If package-lock.json changes, a new cache is created.
+          key: ${{ runner.os }}-playwright-browsers-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-browsers-
+      
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       - name: Run Tweet Scraper for Manual Input
-        # Use the handle provided by the user in the input field
         run: node scraper.js ${{ github.event.inputs.twitter_handle }}
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
