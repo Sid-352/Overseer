@@ -23,7 +23,7 @@ async function sendToDiscord(tweetData) {
     })
     .setDescription(tweetData.tweetText)
     .setTimestamp(new Date(tweetData.tweetTimestamp))
-    .setFooter({ text: 'X •' });
+    .setFooter({ text: '𝕏' });
   if (tweetData.tweetImageUrl) {
     embed.setImage(tweetData.tweetImageUrl);
   }
@@ -140,5 +140,6 @@ async function main() {
 
 
 main();
+
 
 
