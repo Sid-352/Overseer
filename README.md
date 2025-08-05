@@ -15,14 +15,13 @@ An upgrade of the original tweet scraper, now fully functional and packed with a
 
 ## Setup & Configuration
 
-Follow these steps to get your own instance of Overseer running.
 
 ### 1. Initial Setup
-First, clone the repository to your local machine and install the necessary dependencies.
+First, clone the repository to your local machine (or into another Github repo) and install the necessary dependencies.
 
 ```bash
 # Clone the repository
-git clone [https://github.com/Sid-352/Overseer.git](https://github.com/Sid-352/Overseer.git)
+git clone https://github.com/Sid-352/Overseer.git
 
 # Navigate into the project directory
 cd Overseer
@@ -43,8 +42,9 @@ Create a file named `.env` in the root of your project folder. Copy the followin
 AUTH_TOKEN=auth_token_here
 
 # Your Discord channel's webhook URL
-DISCORD_WEBHOOK_URL=[https://discord.com/api/webhooks/](https://discord.com/api/webhooks/)...
+DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
 ```
+
 
 **B. Get Your `AUTH_TOKEN`**
 
@@ -57,11 +57,13 @@ This token allows the scraper to access X.com as a logged-in user.
 5.  In the filter box, type `auth_token`.
 6.  Copy the entire long string from the **"Cookie Value"** field and paste it into your `.env` file.
 
+
 **C. Get Your `DISCORD_WEBHOOK_URL`**
 
 1. In Discord, go to the settings of the channel you want to post in (`Edit Channel` > `Integrations`).
 2. Click on "Webhooks" and create a "New Webhook".
 3. Copy the new Webhook URL. Paste this into your `.env` file.
+
 
 **D. Add Secrets to GitHub**
 
@@ -78,7 +80,7 @@ Overseer operates via two GitHub Actions workflows, which can be found in the **
 
 ### Scheduled Tweet Fetch
 - **What it does**: Automatically checks for a new tweet from a pre-defined handle.
-- **How it runs**: Runs on a schedule (every 12 hours). You can also trigger it manually from the Actions tab.
+- **How it runs**: Runs on a schedule (every 12 hours). Can also be triggered manually from the **Actions** tab.
 - **To configure**: To change the handle it checks, edit the `run` command in the `.github/workflows/scheduled_check.yml` file.
 
 ### Manual Tweet Fetch
@@ -88,4 +90,4 @@ Overseer operates via two GitHub Actions workflows, which can be found in the **
   2. Click on **"Manual Tweet Fetch"** in the sidebar.
   3. Click the **"Run workflow"** dropdown button.
   4. Enter the Twitter handle you want to check (without the `@`) into the text box.
-  5. Click the green "Run workflow" button.
+  5. Click the "Run workflow" button.
