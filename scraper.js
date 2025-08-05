@@ -9,7 +9,7 @@ require('dotenv').config();
 async function sendToDiscord(tweetData) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   if (!webhookUrl) {
-    console.error('❌ Error: DISCORD_WEBHOOK_URL is not set in the .env file.');
+    console.error('Error: DISCORD_WEBHOOK_URL is not set in the .env file.');
     return;
   }
   // Declaration of the webhook
@@ -34,9 +34,9 @@ async function sendToDiscord(tweetData) {
       avatarURL: tweetData.profilePicUrl,
       embeds: [embed],
     });
-    console.log('✅ Successfully sent to Discord!');
+    console.log('Successfully sent to Discord!');
   } catch (error) {
-    console.error('❌ Error sending to Discord:', error);
+    console.error('Error sending to Discord:', error);
     throw error;
   }
 }
@@ -44,7 +44,7 @@ async function sendToDiscord(tweetData) {
 async function main() {
   const handle = process.argv[2];
   if (!handle) {
-    console.error('❌ Error: No Twitter handle provided. Usage: node scraper.js <handle>');
+    console.error('Error: No Twitter handle provided. Usage: node scraper.js <handle>');
     return;
   }
   console.log(`Starting scraper for handle: @${handle}`);
@@ -61,11 +61,11 @@ async function main() {
 
   const authToken = process.env.AUTH_TOKEN;
   if (!authToken) {
-    console.error('❌ Error: AUTH_TOKEN is not set in the .env file.');
+    console.error('Error: AUTH_TOKEN is not set in the .env file.');
     return;
   }
 
-  console.log('🚀 Launching browser...');
+  console.log('Launching browser...');
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
@@ -140,3 +140,4 @@ async function main() {
 
 
 main();
+
