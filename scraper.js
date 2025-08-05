@@ -130,7 +130,7 @@ async function main() {
     await fs.writeFile(logFilePath, tweetData.tweetUrl);
 
   } catch (error) {
-    console.error(`❌ An error occurred for handle @${handle}:`, error);
+    console.error(`An error occurred for handle @${handle}:`, error);
     await page.screenshot({ path: `error_${handle}.png` });
   } finally {
     await browser.close();
@@ -140,4 +140,5 @@ async function main() {
 
 
 main();
+
 
