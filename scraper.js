@@ -1,27 +1,29 @@
-// Import libraries
+// Library Import
 const { chromium } = require('playwright');
 const { WebhookClient, EmbedBuilder } = require('discord.js');
 const fs = require('fs').promises;
 const path = require('path');
 require('dotenv').config();
 
+// Send data to Discord via Webhook
 async function sendToDiscord(tweetData) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   if (!webhookUrl) {
     console.error('❌ Error: DISCORD_WEBHOOK_URL is not set in the .env file.');
     return;
   }
+  // Declaration of the webhook
   const webhookClient = new WebhookClient({ url: webhookUrl });
   const embed = new EmbedBuilder()
     .setColor(0x1DA1F2)
     .setAuthor({ 
-      name: `${tweetData.authorName} (${tweetData.authorHandle})`, 
+      name: `${tweetData.authorName} • ${tweetData.authorHandle}`, 
       iconURL: tweetData.profilePicUrl, 
       url: tweetData.tweetUrl 
     })
     .setDescription(tweetData.tweetText)
     .setTimestamp(new Date(tweetData.tweetTimestamp))
-    .setFooter({ text: 'Posted from X' });
+    .setFooter({ text: 'X •' });
   if (tweetData.tweetImageUrl) {
     embed.setImage(tweetData.tweetImageUrl);
   }
@@ -105,7 +107,7 @@ async function main() {
       console.log('No new tweet found. Exiting.');
       return;
     }
-
+// Definition of the webhook
     const tweetData = {
         handle: handle,
         authorName: (await latestTweet.locator('[data-testid="User-Name"] span').first().textContent() || '').trim(),
@@ -135,5 +137,6 @@ async function main() {
     console.log('Browser closed.');
   }
 }
+
 
 main();
