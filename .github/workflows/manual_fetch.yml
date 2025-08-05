@@ -5,7 +5,7 @@ on:
       twitter_handle:
         description: 'Twitter handle to check (without the @)'
         required: true
-        default: 'ELDENRING'
+        default: 'github'
 jobs:
   scrape:
     runs-on: ubuntu-latest
