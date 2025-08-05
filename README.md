@@ -1,6 +1,6 @@
 # Overseer
-
-![Scheduled Tweet Fetch](https://github.com/Sid-352/Overseer/actions/workflows/scheduled_check.yml/badge.svg)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)
+![Scheduled Tweet Fetch](https://github.com/Sid-352/Overseer/actions/workflows/scheduled_fetch.yml/badge.svg)
 ![Manual Tweet Fetch](https://github.com/Sid-352/Overseer/actions/workflows/manual_fetch.yml/badge.svg)
 
 An upgrade of the original tweet scraper, now fully functional and packed with a variety of modern features. Overseer monitors X/Twitter profiles for new tweets and sends them as formatted notifications to a Discord webhook.
