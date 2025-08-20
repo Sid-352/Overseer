@@ -38,7 +38,7 @@ jobs:
         run: node scraper.js ${{ github.event.inputs.twitter_handle }}
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL2 }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       - name: Commit and Push Log Files
         run: |
           git config --global user.name 'github-actions[bot]'
